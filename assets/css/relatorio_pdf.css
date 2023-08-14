@@ -1,0 +1,32 @@
+@media print {
+   @page {
+      size: 210mm 297mm;
+      /* Chrome sets own margins, we change these printer settings */
+      margin: 2.5cm 3cm;
+      background-image: url(../imagens/logo-marca-dagua.png);
+      background-size: 5cm;
+      background-position: center;
+      background-repeat: no-repeat;
+   }
+   @font-face {
+      font-family: "ubuntu-regular";
+      src: url(../fonts/ubuntu-regular.ttf);
+   }
+   * {
+      text-shadow: none;
+      filter: none;
+      -ms-filter: none;
+      font-family: "ubuntu-regular", "Arial", sans-serif;
+      margin: 0;
+      padding: 0;
+   }
+   div p {
+      font-size: 2pt;
+   }
+   p {
+      font-size: 12pt;
+   }
+   b{
+      text-transform: uppercase;
+   }
+}

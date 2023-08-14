@@ -38,7 +38,7 @@
 
 <body>
     <div id="tela_load">
-        <img src="<?php BASE_URL ?>/assets/imagens/loading.gif" style="display: block; margin: auto; margin-top: 300px;">
+        <img src="<?= BASE_URL ?>/assets/imagens/loading.gif" style="display: block; margin: auto; margin-top: 300px;">
     </div>
     <div id="tela_sistema">
         <!-- Navigation -->
@@ -197,7 +197,7 @@
         <!-- /#conteudo_sistema -->
     </div>
     <!-- /#tela_sistema -->
-        <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
+    <!-- Inclui todos os plugins compilados (abaixo), ou inclua arquivos separadados se necessário -->
     <script src="<?php echo BASE_URL ?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/jquery.maskedinput.min.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/jquery.maskMoney.js"></script>

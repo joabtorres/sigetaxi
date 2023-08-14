@@ -133,6 +133,75 @@ class controller
             return str_replace(',', '.', str_replace('R$ ', '', strval($valor)));
         }
     }
+    /**
+     * Está função é responsável para converte uma data do padrão 'ano-mes-dia' para 'dia de mes de ano'
+     * @param string  $date - data solicitada pelo parametro
+     * r
+     * @access protected
+     * @return null|string $resultado - retorna a data dia de mês de ano 15 de agosto de 2019
+     * @author Joab Torres <joabtorres1508@gmail.com>
+     */
+    protected function formatDateViewComplete(string $date): ?string
+    {
+        $arrayDate = explode("-", $date);
+        if (count($arrayDate) == 3) {
+            return $arrayDate[2] . ' de ' . $this->getMes($arrayDate[1]) . ' de ' . $arrayDate[0];
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Está função é responsável para retorna o nome do més
+     * @param string $mes = mês selecionado
+     * @access protected
+     * @return null|string $resultado
+     * @author Joab Torres <joabtorres1508@gmail.com>
+     */
+    protected function getMes(string $mes): ?string
+    {
+        $array = array('janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setemmbro', 'outubro', 'novembro', 'dezembro');
+        $resultado = null;
+        for ($i = 0; $i < count($array); $i++) {
+            if (($i + 1) == $mes) {
+                $resultado = $array[$i];
+            }
+        }
+        return $resultado;
+    }
+    /**
+     * Resonsavel por retorna o endereço completo
+     *
+     * @param array $endereco
+     * @return string
+     */
+    protected function endereco(array $endereco): string
+    {
+        $endrecoCompleto = "";
+        if (!empty($endereco["logradouro"])) {
+            $endrecoCompleto .= $endereco['logradouro'];
+        }
+
+        if (!empty($endereco["numero"])) {
+            $endrecoCompleto .= ", Nº {$endereco['numero']}";
+        }
+        if (!empty($endereco["bairro"])) {
+            $endrecoCompleto .= ", Bairro {$endereco['bairro']}";
+        }
+        if (!empty($endereco["complemento"])) {
+            $endrecoCompleto .= ", Complemento {$endereco['complemento']}";
+        }
+        if (!empty($endereco["cidade"])) {
+            $endrecoCompleto .= " - {$endereco['cidade']}";
+        }
+        if (!empty($endereco["estado"])) {
+            $endrecoCompleto .= "/{$endereco['estado']}";
+        }
+        if (!empty($endereco["cep"])) {
+            $endrecoCompleto .= ", CEP: {$endereco['cep']}";
+        }
+        return $endrecoCompleto;
+    }
 
     /**
      * Está função é responsável para retornar codigo da cooperativa;

@@ -24,7 +24,6 @@
             }
         }
     </script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body onload="mostrarConteudo()">
@@ -38,6 +37,7 @@
                 <div class="col-sm-offset-1 col-sm-10 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4" id="tela_login">
                     <h4 class="text-center text-login text-uppercase"><?= SITE_NAME ?></h4>
                     <div class="row">
+                        <div class="col-md-offset-1 col-md-10"><img src="<?php echo BASE_URL; ?>/assets/imagens/logo_login.png" alt="Logotipo da cootax" class="img-center img-login img-responsive"> <br /></div>
                         <div class="col-md-12">
                             <form method="POST">
                                 <div class="form-group">
@@ -53,9 +53,6 @@
                                         <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                                         <input type="password" id="iSearchSenha" name="nSearchSenha" class="form-control" placeholder="Password">
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="g-recaptcha" data-sitekey="6LfoeUwUAAAAAP2scgtDAOrb3hSeYkF056GyPhEB"></div>
                                 </div>
                                 <div class="form-group">
                                     <?php

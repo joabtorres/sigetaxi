@@ -103,4 +103,26 @@ class operacaoController extends controller
             header("Location: {$url}");
         }
     }
+
+    public function declaracao_vigencia($cod_cooperado)
+    {
+        if ($this->checkUser() >= 2 && intval($cod_cooperado) > 0) {
+            $dados = array();
+            $viewName = 'socio/operacoes/declaracao/conformidade';
+            $crudModel = new crud_db();
+            $dados['empresa'] = $crudModel->read_specific("SELECT * FROM sig_cooperativa WHERE cod=:cod", ['cod' => $this->getCodCooperativa()]);
+            $dados['socio'] = $crudModel->read_specific("SELECT sc.* FROM sig_cooperado as sc WHERE cod_cooperado=:cod", ['cod' => filter_var($cod_cooperado, FILTER_VALIDATE_INT)]);
+            $endereco = $crudModel->read_specific("SELECT * FROM sig_cooperado_endereco WHERE cod_cooperado=:cod", ['cod' => filter_var($cod_cooperado, FILTER_VALIDATE_INT)]);
+            $dados['socio']['endereco'] = $this->endereco($endereco);
+            if (!empty($dados['empresa']) && !empty($dados['socio'])) {
+                $this->loadView($viewName, $dados);
+            } else {
+                $url = BASE_URL . "/home";
+                header("Location: {$url}");
+            }
+        } else {
+            $url = BASE_URL . "/home";
+            header("Location: {$url}");
+        }
+    }
 }

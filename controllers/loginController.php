@@ -20,6 +20,10 @@ class loginController extends controller
      */
     public function index()
     {
+        $this->login();
+    }
+    public function indexOFF()
+    {
         $view = "login";
         $dados = array();
         $_SESSION = array();
@@ -28,7 +32,7 @@ class loginController extends controller
             $captcha_data = $_POST['g-recaptcha-response'];
 
             if ($captcha_data != '') {
-                $secreto = '6LfoeUwUAAAAAEwDAsbWlmlkZZkrrrj4m98BlVGZ';
+                $secreto = '6Lf7N24nAAAAALYnbVouL35YKpmOZYguHNNllyMc';
                 $var = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secreto . "&response=" . $captcha_data . "&remoteip=" . $_SERVER['REMOTE_ADDR']);
                 $resposta = json_decode($var, true);
             }
